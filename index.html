@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Livre de Recettes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenue dans Mon Livre de Recettes</h1>
+        <nav>
+            <input type="text" id="search-bar" placeholder="Rechercher une recette...">
+        </nav>
+    </header>
+
+    <main>
+        <section id="recipes">
+            <h2>Recettes Populaires</h2>
+            <div class="recipe-grid" id="recipe-grid">
+                
+            </div>
+        </section>
+
+        <section id="add-recipe">
+            <h2>Ajouter une nouvelle recette</h2>
+            <form id="recipe-form">
+                <label for="title">Titre de la recette :</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="ingredients">Ingrédients :</label>
+                <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+
+                <label for="steps">Étapes :</label>
+                <textarea id="steps" name="steps" rows="4" required></textarea>
+
+                <button type="submit">Ajouter la recette</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mon Livre de Recettes. Tous droits réservés.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
