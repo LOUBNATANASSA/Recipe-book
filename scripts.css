@@ -1,0 +1,58 @@
+const recipes = [
+    {
+        title: "Pâtes Carbonara",
+        ingredients: "Pâtes, œufs, pancetta, parmesan, poivre",
+        steps: "1. Faites cuire les pâtes. 2. Préparez la sauce avec les œufs et le parmesan. 3. Mélangez le tout avec la pancetta cuite."
+    },
+    {
+        title: "Crêpes Sucrées",
+        ingredients: "Farine, œufs, lait, sucre, beurre",
+        steps: "1. Mélangez les ingrédients. 2. Faites cuire dans une poêle chaude. 3. Ajoutez votre garniture préférée."
+    }
+];
+
+const recipeGrid = document.getElementById("recipe-grid");
+const searchBar = document.getElementById("search-bar");
+const recipeForm = document.getElementById("recipe-form");
+
+//Afficher/////////////////////////////////
+function displayRecipes(filteredRecipes) {
+    recipeGrid.innerHTML = ""; // Réinitialise la grille
+    filteredRecipes.forEach(recipe => {
+        const recipeCard = document.createElement("div");
+        recipeCard.classList.add("recipe-card");
+        recipeCard.innerHTML = `
+            <h3>${recipe.title}</h3>
+            <p><strong>Ingrédients :</strong> ${recipe.ingredients}</p>
+            <p><strong>Étapes :</strong> ${recipe.steps}</p>
+        `;
+        recipeGrid.appendChild(recipeCard);
+    });
+}
+
+///Filtre//////////////////////////////////
+searchBar.addEventListener("input", () => {
+    const query = searchBar.value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe =>
+        recipe.title.toLowerCase().includes(query) ||
+        recipe.ingredients.toLowerCase().includes(query)
+    );
+    displayRecipes(filteredRecipes);
+});
+
+// Ajouter///////////////////////////
+recipeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("title").value;
+    const ingredients = document.getElementById("ingredients").value;
+    const steps = document.getElementById("steps").value;
+
+    recipes.push({ title, ingredients, steps });
+    displayRecipes(recipes);
+
+    recipeForm.reset(); // Réinitialise le formulaire
+    alert("Recette ajoutée avec succès !");
+});
+
+
+displayRecipes(recipes);
